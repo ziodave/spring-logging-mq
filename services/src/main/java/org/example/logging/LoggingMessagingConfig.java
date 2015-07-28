@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @since 0.0.1
  */
 @Configuration
-public class MessagingConfig {
+public class LoggingMessagingConfig {
 
 
     @Value("${messaging.exchanges.logging.name:example.logging}")
