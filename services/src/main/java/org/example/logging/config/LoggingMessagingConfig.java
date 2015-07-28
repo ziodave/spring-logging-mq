@@ -1,4 +1,4 @@
-package org.example.logging;
+package org.example.logging.config;
 
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;

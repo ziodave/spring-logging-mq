@@ -9,13 +9,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @SpringBootApplication
 @EnableScheduling
-public class Application extends Thread {
+public class ClientApplication extends Thread {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ClientApplication.class, args);
 
-        new Application().run();
+        new ClientApplication().run();
     }
 
     @Override
