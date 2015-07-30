@@ -1,7 +1,7 @@
 package org.example.logging.listeners;
 
-import org.example.logging.commands.SayHelloCommand;
-import org.example.logging.commands.SayHelloCommandExecutor;
+import org.example.logging.commands.GetListCommand;
+import org.example.logging.commands.GetListCommandExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -9,26 +9,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by david on 28/7/15.
  */
 @Service
-public class CommandListener {
+public class GetListCommandListener {
 
-    private final SayHelloCommandExecutor commandExecutor;
+    private final GetListCommandExecutor commandExecutor;
 
     private final static Logger logger = LoggerFactory.getLogger(LoggingListener.class);
 
     @Autowired
-    public CommandListener(final SayHelloCommandExecutor commandExecutor) {
+    public GetListCommandListener(final GetListCommandExecutor commandExecutor) {
 
         this.commandExecutor = commandExecutor;
     }
 
     @RabbitListener(queues = "#{commandQueue.name}")
-    public void onCommandMessage(final Message<SayHelloCommand> message) {
+    public List<String> onCommandMessage(final Message<GetListCommand> message) {
 
-        commandExecutor.execute(message.getPayload());
+        return commandExecutor.execute(message.getPayload());
     }
 
 }

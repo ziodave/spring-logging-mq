@@ -1,21 +1,17 @@
 package org.example.logging.commands;
 
-import java.io.Serializable;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by david on 28/7/15.
  */
-public class SayHelloCommandExecutor implements Serializable {
+@Service
+public class SayHelloCommandExecutor implements CommandExecutor<SayHelloCommand, Void> {
 
-    private SayHelloCommand commandBag;
+    public Void execute(SayHelloCommand command) {
 
-    public SayHelloCommandExecutor(final SayHelloCommand commandBag) {
+        System.out.println("Hello " + command.getMessage());
 
-        this.commandBag = commandBag;
-    }
-
-    public void execute() {
-
-        System.out.println("Hello " + commandBag.getMessage());
+        return null;
     }
 }
